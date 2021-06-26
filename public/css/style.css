@@ -38,6 +38,10 @@ header a {
     text-decoration: none;
 }
 
+p b {
+    color: dodgerblue;
+}
+
 .portrait {
     width: 250px;
 }
@@ -47,9 +51,17 @@ input {
     padding: 8px;
 }
 
-button {
+.button {
     cursor: pointer;
     border: 3px solid #888888;
     background: #888888;
     color: white;
+}
+
+.hidden {
+    display: none;
+}
+
+#more-info {
+    display: inline;
 }

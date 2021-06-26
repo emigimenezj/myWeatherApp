@@ -14,16 +14,29 @@ function forecast(lat, long, callback) {
             callback("Unable to find location!");
 
         else {
-            let {weather_descriptions: weather, temperature: temp, precip} = response.body.current
-            // let weather = response.body.current.weather_descriptions[0];
-            // let temp = response.body.current.temperature;
-            // let precip = response.body.current.precip;
+            let {
+                weather_descriptions: weather,
+                temperature: temp,
+                precip,
+                feelslike,
+                humidity,
+                visibility
+            } = response.body.current;
             callback(
                 undefined,
-                `${weather[0]}. It is currently ${temp} degrees out. There is a ${precip}% chance of rain.`
+                `<b>${weather[0]}</b>. It is currently <b>${temp} degrees</b> out. There is a <b>${precip}%</b> chance of rain.`,
+                `${repeatString(10, "&nbsp;")}Feels Like: <b>${feelslike} degrees</b><br>` +
+                `${repeatString(15,"&nbsp;")}Humidity: <b>${humidity}%</b><br>` +
+                `${repeatString(20,"&nbsp;")}Visibility: <b>${visibility} km</b>`
             );
         }
     });
+}
+
+function repeatString (n, string) {
+    let res = '';
+    for (let i = 0; i < n; i++) res += string;
+    return res;
 }
 
 module.exports = forecast;
