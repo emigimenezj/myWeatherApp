@@ -64,4 +64,5 @@ input {
 
 #more-info {
     display: inline;
+    cursor: pointer;
 }
